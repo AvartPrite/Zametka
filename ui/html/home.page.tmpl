@@ -3,6 +3,23 @@
 {{define "title"}}Home{{end}}
 
 {{define "main"}}
-<h2>Заметки</h2>
-<p>Пусто!</p>
+    <h2>Последние заметки</h2>
+    {{if .Snippets}}
+    <table>
+        <tr>
+            <th>Заголовок</th>
+            <th>Создан</th>
+            <th>ID</th>
+        </tr>
+        {{range .Snippets}}
+        <tr>
+            <td><a href='/snip?id={{.ID}}'>{{.Title}}</a></td>
+            <td>{{.Created}}</td>
+            <td>#{{.ID}}</td>
+        </tr>
+        {{end}}
+    </table>
+    {{else}}
+        <p>Пусто...</p>
+    {{end}}
 {{end}}
